@@ -11,12 +11,23 @@ def tac_board(board):
 
 def menu():
     ch = input("Do you want to play? (yes or no) : ")
-    if ch.casefold() == "no":
+    if ch.casefold() == "no".casefold():
         sys.exit(0)
-    elif ch.casefold() == "yes":
+    elif ch.casefold() == "yes".casefold():
         print("Who goes first?")
         choice = input("Enter 'p' for player and 'c' or computer : ")
         return choice
+
+
+def full(board):
+    for i in range(1, 10):
+        if space(board, i):
+            return False
+    return True
+
+
+def space(board, m):
+    return board[m] == ' '
 
 
 def check_win(brd, let):
@@ -28,6 +39,11 @@ def check_win(brd, let):
             brd[3] == let and brd[6] == let and brd[9] == let) or (
             brd[1] == let and brd[5] == let and brd[9] == let) or (
             brd[3] == let and brd[5] == let and brd[7] == let)
+
+
+def move(board):
+    m = input("Next move (1-9) : ")
+    return int(m)
 
 
 if __name__ == "__main__":
